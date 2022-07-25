@@ -38,7 +38,6 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  console.log(response);
 }
 
 axios.get(apiUrl).then(displayTemperature);
