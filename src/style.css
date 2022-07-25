@@ -13,8 +13,10 @@ body {
 .overview {
   margin-bottom: 20px;
 }
-.weather-pic img {
-  margin-right: 10px;
+.weather-temperature img {
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
 }
 h1 {
   color: #878787;
@@ -23,19 +25,22 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
 }
+.weather-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+.weather-temperature .units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
 ul {
   margin: 0;
   padding: 0;
 }
-.current {
-  list-style: none;
-  color: #878787;
-  font-size: 16px;
-  font-weight: 100;
-  line-height: 19px;
-}
-.extra-details ul {
-  margin-right: 0;
+li {
   list-style: none;
   color: #878787;
   font-size: 16px;
@@ -44,4 +49,5 @@ ul {
 }
 strong {
   font-size: 64px;
+  font-weight: 400px;
 }
