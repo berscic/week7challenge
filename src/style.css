@@ -9,6 +9,11 @@ body {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
+  background: linear-gradient(
+    181.2deg,
+    rgb(181, 239, 249) 10.5%,
+    rgb(254, 254, 254) 86.8%
+  );
 }
 .overview {
   margin-bottom: 20px;
