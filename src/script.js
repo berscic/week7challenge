@@ -21,14 +21,16 @@ function formatDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
+function displayForcast(response) {
+  console.log(response.data.daily);
+}
+let forecastElement = document.querySelector("#forecast");
+let forecastHTML = `<div class="row">`;
+let days = ["Thu", "Fri", "Sat", "Sun"];
+days.forEach(function (day) {
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
           <div class="weather-forecast-date">
           ${day}
           </div>
@@ -37,10 +39,19 @@ function displayForecast() {
            <span class="weather-forecast-temperature-max">18° </span> 
            <span class="weather-forecast-temperature-min">12° </span>
       </div>`;
-    forecastHTML = forecastHTML + `</div>`;
-  });
+  forecastHTML = forecastHTML + `</div>`;
+});
 
-  forecastElement.innerHTML = forecastHTML;
+forecastElement.innerHTML = forecastHTML;
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let longitude = coordinates.lon;
+  let latitude = coordinates.lat;
+  let apiKey = "e4cbb3ce899275263f94d2d4a3705a32";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForcast);
 }
 
 function displayTemperature(response) {
@@ -63,6 +74,7 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 function search(city) {
   let apiKey = "e4cbb3ce899275263f94d2d4a3705a32";
@@ -105,4 +117,3 @@ let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
 
 search("Malta");
-displayForecast();
